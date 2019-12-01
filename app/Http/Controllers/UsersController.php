@@ -15,7 +15,7 @@ class UsersController extends Controller
             return view('users.users')->with('users', $users);
         }else{
             $users = App\User::all(); 
-            
+
             return view('users.users')->with('users', $users);
         }        
     }
@@ -38,7 +38,6 @@ class UsersController extends Controller
         $user = App\User::find($user_id);
         $user->fill($request->all());
         $user->save();
-
         return redirect()->route('users.index');
     }
 
