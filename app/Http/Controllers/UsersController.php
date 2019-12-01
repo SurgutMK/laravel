@@ -14,7 +14,8 @@ class UsersController extends Controller
             $users = App\User::where('experience', '>=', $exp)->orderBy('experience')->get();
             return view('users.users')->with('users', $users);
         }else{
-            $users = App\User::all();
+            $users = App\User::all(); 
+            
             return view('users.users')->with('users', $users);
         }        
     }
