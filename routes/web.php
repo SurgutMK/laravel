@@ -17,11 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/*
+ * Роуты были немного не по CRUD. Нет смысла добавлять в URL store, destroy, show
+ * когда мы уже используемые разные типы запросов GET, POST, DELETE, PUT
+ *
+ * + эти же роуты можно создать одной строкой :)
+ * Route::resource('articles', 'ArticlesController');
+ * */
+
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('articles', 'ArticlesController@index')->name('articles');
-Route::get('articles/{id}/show', 'ArticlesController@article')->name('article');
-Route::delete('articles/{id}/destroy', 'ArticlesController@destroy')->name('articles.destroy');
-
+Route::get('articles/{article}', 'ArticlesController@article')->name('article');
+Route::delete('articles/{article}', 'ArticlesController@destroy')->name('articles.destroy');
 
 Route::resource('users', 'UsersController');
 // Route::get('users', 'UsersController@index')->name('users.index');

@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function articles(){
-        return $this->belongsToMany('App\Article');
+        return $this->belongsToMany(Article::class);
     }
 
 }

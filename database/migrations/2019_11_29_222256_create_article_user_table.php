@@ -15,9 +15,13 @@ class CreateArticleUserTable extends Migration
     {
         Schema::create('article_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            /*
+             * у юзеров и статей поле ID типа unsigned big integer (bigIncrements)
+             * ссылающиеся поля должны быть таким же типом, иначе некоторые БД ругаются (mysql например)
+            */
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('article_id');
+            $table->unsignedBigInteger('article_id');
             $table->foreign('article_id')->references('id')->on('articles');
         });
     }

@@ -48,6 +48,17 @@
             </div>
 
             <div class="form-group">
+                <label>
+                    <input type="radio" class="form-control" name="gender" value="malea">
+                    male
+                </label>
+                <label>
+                    <input type="radio" class="form-control" name="gender" value="femalae">
+                    female
+                </label>
+            </div>
+
+            <div class="form-group">
 
                 <input type="text" class="form-control" name="experience" placeholder="Experience" value="{{old('experience')}}">
             </div>

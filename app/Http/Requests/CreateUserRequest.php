@@ -21,12 +21,21 @@ class CreateUserRequest extends FormRequest
      *
      * @return array
      */
+
+    /*
+     * добавил немного правил*/
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'name' => 'required|max:255',
+            'email' => 'email|required',
+            'password' => 'required|max:255',
+            'experience' => 'numeric|max:255',
+            'nick_name' => 'max:255',
+            'last_name' => 'max:255',
+            'phone' => 'max:12',
+            'avatar' => 'image',
+            'gender' => 'in:male,female',
         ];
     }
 

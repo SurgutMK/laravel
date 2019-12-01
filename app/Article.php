@@ -9,17 +9,18 @@ use App;
 class Article extends Model
 {
     use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     public function users(){
         return $this->belongsToMany('App\User');
     }
 
-    public function isAutor(User $user){
-        if(App\Article::onlyTrashed()->get()->contains($this))
+    public function isAuthor(User $user){
+        if($this->trashed())
             return null;
         else
-            return $this->users()->pluck('user_id')->contains($user);
+            /*
+             * чтобы не загружать всех юзеров можно сделать таким образом*/
+            return $this->users()->where('user_id', $user->id)->exists();
     }
-
-    protected $dates = ['deleted_at'];
 }
